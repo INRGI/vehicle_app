@@ -5,6 +5,9 @@ export const Container = styled.div`
     flex-direction: column;
     gap: 15px;
     align-items: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 `;
 
 export const LoadMoreButton = styled.button`
@@ -21,4 +24,15 @@ export const LoadMoreButton = styled.button`
     letter-spacing: -0.01em;
     color: #101828;
     margin-bottom: 15px;
+`;
+
+export const NoFavoritesMessage = styled.p`
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    color: #101828;
+    margin-bottom: 15px;
+    margin-top: 200px;
 `;

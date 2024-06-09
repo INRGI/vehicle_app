@@ -1,6 +1,11 @@
+import FavoritsList from "../../components/FavoritesList/FavoritesList";
+import { Container } from "./FavoritesPage.styled";
+
 const FavoritesPage = () => {
     return (
-        <h2>FavoritesPage</h2>
+        <Container>
+            <FavoritsList />
+        </Container>
     )
 }
 

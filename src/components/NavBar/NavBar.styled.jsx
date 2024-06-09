@@ -8,7 +8,6 @@ export const Header = styled.header`
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
     width: 100%;
-    padding: 0 30px;
     margin-bottom: 10px;
 `;
 

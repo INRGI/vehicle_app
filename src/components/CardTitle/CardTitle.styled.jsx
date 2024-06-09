@@ -13,6 +13,10 @@ export const Name = styled.h3`
     line-height: 125%;
     color: #101828;
     margin: 0;
+    max-width: 350px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 `;
 
 export const DetailContainer = styled.div`

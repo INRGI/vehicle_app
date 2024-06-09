@@ -1,30 +1,25 @@
 import { useEffect } from 'react';
 
-import { getCampers, toggleFavorite } from '../../redux/slices/campersSlice';
+import { getCampers } from '../../redux/slices/campersSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import CardTitle from '../CardTitle/CardTitle';
+import Card from '../Card/Card';
+import { Container } from './CardList.styled';
+
 
 const CardList = () => {
+  const { data } = useSelector(state => state.campers);
   const dispatch = useDispatch();
-  const { data, favorites} = useSelector(state => state.campers);
 
   useEffect(() => {
     dispatch(getCampers());
   }, [dispatch]);
 
   return (
-    <div>
-      
+    <Container>
       {data.map(camper => (
-        <div key={camper._id}>
-          <CardTitle reviews={camper.reviews.length} name={camper.name} stars={camper.rating} location={camper.location}/>
-          <p>{camper.description}</p>
-          <button onClick={() => dispatch(toggleFavorite(camper._id))}>
-            {favorites.includes(camper._id) ? 'Remove from favorites' : 'Add to favorites'}
-          </button>
-        </div>
+        <Card key={camper._id} camper={camper}/>
       ))}
-    </div>
+    </Container>
   );
 };
 

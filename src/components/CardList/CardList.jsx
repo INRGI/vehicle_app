@@ -7,7 +7,7 @@ import { Container } from './CardList.styled';
 
 
 const CardList = () => {
-  const { data } = useSelector(state => state.campers);
+  const { filteredData } = useSelector(state => state.campers);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const CardList = () => {
 
   return (
     <Container>
-      {data.map(camper => (
+      {filteredData.map(camper => (
         <Card key={camper._id} camper={camper}/>
       ))}
     </Container>

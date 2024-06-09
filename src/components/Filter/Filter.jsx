@@ -1,24 +1,28 @@
-import { Container, Icon, IconAnother, Input, InputIcon, InputWrapper, Item, Line, List, LocationContainer, SearchButton, Text, Title, TypeContainer, VehicleContainer } from "./Filter.styled";
-
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Container, IconAnother, Item, Line, List, LocationContainer, SearchButton, Text, Title, TypeContainer, VehicleContainer, InputWrapper, Input, InputIcon, Icon } from "./Filter.styled";
+import { filterCampers } from '../../redux/slices/campersSlice';
 import sprite from '../../assets/sprite.svg';
-import { useState } from "react";
 
 const Filter = () => {
     const [selectedItems, setSelectedItems] = useState({});
-    const [selectedTypes, setSelectedTypes] = useState({});
+    const [selectedType, setSelectedType] = useState('');
+    const [location, setLocation] = useState('');
+    const dispatch = useDispatch();
 
-    const handleItemClick = (index) => {
+    const handleItemClick = (label) => {
         setSelectedItems((prevSelectedItems) => ({
             ...prevSelectedItems,
-            [index]: !prevSelectedItems[index],
+            [label]: !prevSelectedItems[label],
         }));
     };
 
-    const handleTypeClick = (index) => {
-        setSelectedTypes((prevSelectedItems) => ({
-            ...prevSelectedItems,
-            [index]: !prevSelectedItems[index],
-        }));
+    const handleTypeClick = (label) => {
+        setSelectedType((prevSelectedType) => (prevSelectedType === label ? '' : label));
+    };
+
+    const handleSearchClick = () => {
+        dispatch(filterCampers({ location, selectedItems, selectedType }));
     };
 
     const items = [
@@ -40,7 +44,12 @@ const Filter = () => {
             <LocationContainer>
                 <Text>Location</Text>
                 <InputWrapper>
-                    <Input type="text" placeholder="Ukraine" />
+                    <Input
+                        type="text"
+                        placeholder="Enter location"
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)}
+                    />
                     <InputIcon>
                         <use xlinkHref={`${sprite}#icon-map-pin`} />
                     </InputIcon>
@@ -55,8 +64,8 @@ const Filter = () => {
                     {items.map((item, index) => (
                         <Item
                             key={index}
-                            isSelected={selectedItems[index]}
-                            onClick={() => handleItemClick(index)}
+                            isSelected={selectedItems[item.label]}
+                            onClick={() => handleItemClick(item.label)}
                         >
                             <IconAnother>
                                 <use width={32} height={32} xlinkHref={`${sprite}${item.icon}`} />
@@ -71,24 +80,24 @@ const Filter = () => {
                 <Title>Vehicle type</Title>
                 <Line />
                 <List>
-                    {types.map((item, index) => (
+                    {types.map((type, index) => (
                         <Item
                             key={index}
-                            isSelected={selectedTypes[index]}
-                            onClick={() => handleTypeClick(index)}
+                            isSelected={selectedType === type.label}
+                            onClick={() => handleTypeClick(type.label)}
                         >
                             <Icon>
-                                <use width={32} height={32} xlinkHref={`${sprite}${item.icon}`} />
+                                <use width={32} height={32} xlinkHref={`${sprite}${type.icon}`} />
                             </Icon>
-                            {item.label}
+                            {type.label}
                         </Item>
                     ))}
                 </List>
             </TypeContainer>
 
-            <SearchButton>Search</SearchButton>
+            <SearchButton onClick={handleSearchClick}>Search</SearchButton>
         </Container>
-    )
-}
+    );
+};
 
 export default Filter;

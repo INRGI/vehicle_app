@@ -10,6 +10,7 @@ const campersSlice = createSlice({
   name: 'campers',
   initialState: {
     data: [],
+    filteredData: [],
     favorites: [],
     status: 'idle',
     error: null
@@ -22,6 +23,31 @@ const campersSlice = createSlice({
       } else {
         state.favorites.push(camperId);
       }
+    },
+    filterCampers: (state, action) => {
+      const { location, selectedItems, selectedType } = action.payload;
+
+      state.filteredData = state.data.filter(camper => {
+        const matchesLocation = camper.location.toLowerCase().includes(location.toLowerCase());
+
+        const matchesItems = Object.keys(selectedItems).every(item => {
+          if (!selectedItems[item]) return true;
+          switch (item) {
+            case 'AC': return camper.details.airConditioner > 0;
+            case 'Automatic': return camper.transmission === 'automatic';
+            case 'Kitchen': return camper.details.kitchen > 0;
+            case 'TV': return camper.details.TV > 0;
+            case 'Shower/WC': return camper.details.shower > 0;
+            default: return true;
+          }
+        });
+
+        const matchesType = !selectedType || (selectedType === 'Van' && camper.form === 'panelTruck') ||
+          (selectedType === 'Fully Integrated' && camper.form === 'fullyIntegrated') ||
+          (selectedType === 'Alcove' && camper.form === 'alcove');
+
+        return matchesLocation && matchesItems && matchesType;
+      });
     }
   },
   extraReducers: builder => {
@@ -32,6 +58,7 @@ const campersSlice = createSlice({
       .addCase(getCampers.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.data = action.payload;
+        state.filteredData = action.payload;
       })
       .addCase(getCampers.rejected, (state, action) => {
         state.status = 'failed';
@@ -40,5 +67,5 @@ const campersSlice = createSlice({
   }
 });
 
-export const { toggleFavorite } = campersSlice.actions;
+export const { toggleFavorite, filterCampers } = campersSlice.actions;
 export default campersSlice.reducer;

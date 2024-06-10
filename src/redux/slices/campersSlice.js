@@ -12,6 +12,7 @@ const campersSlice = createSlice({
     data: [],
     filteredData: [],
     favorites: [],
+    activeCamper: null,
     status: 'idle',
     error: null
   },
@@ -23,6 +24,9 @@ const campersSlice = createSlice({
       } else {
         state.favorites.push(camperId);
       }
+    },
+    setActiveCamper: (state, action) => {
+      state.activeCamper = action.payload;
     },
     filterCampers: (state, action) => {
       const { location, selectedItems, selectedType } = action.payload;
@@ -67,5 +71,5 @@ const campersSlice = createSlice({
   }
 });
 
-export const { toggleFavorite, filterCampers } = campersSlice.actions;
+export const { toggleFavorite, filterCampers, setActiveCamper } = campersSlice.actions;
 export default campersSlice.reducer;

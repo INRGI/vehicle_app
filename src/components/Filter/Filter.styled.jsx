@@ -60,7 +60,7 @@ export const Line = styled.div`
     height: 1.5px;
     background-color: rgba(16, 24, 40, 0.1);
     width: 100%;
-    max-width: 360px;
+    max-width: 370px;
 `;
 
 export const List = styled.div`

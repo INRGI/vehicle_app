@@ -1,40 +1,76 @@
-Camper Rental Application
-Overview
-This application is developed for a company providing camper rental services in Ukraine. The application consists of three main pages:
+# Camper Rental Application
 
-Home Page: Contains a general description of the services provided by the company.
-Camper Catalog: Displays a catalog of campers with different configurations, filterable by location, equipment, and type.
-Favorite Listings: Shows listings that have been added to favorites by the user.
-The application's UI includes a navigation menu and viewing area, styled according to the design.
+## Overview
 
-Technical Specifications
-Listing Card: Implements a card displaying a camper rental listing.
-Camper Catalog: Initially renders 4 listings, with more loaded upon clicking "Load more".
-Favorite Listings: Allows adding and removing listings from favorites. The color of the "heart" button changes accordingly.
-Persistence: Upon page refresh, maintains the state of favorite listings.
-Modal Window: Opens when clicking "Show more" button, displaying detailed information about the camper. Closes on clicking the close button, backdrop, or pressing Esc key.
-Booking Form: Includes fields for name, email, booking date, and comment. Name, email, and booking date fields are mandatory and undergo validation. Upon submitting valid data, the page refreshes.
-Filtering: Adds filtering capability based on location, equipment, and type.
-Used Libraries
-@emotion/react
-@emotion/styled
-@reduxjs/toolkit
-axios
-formik
-nanoid
-npm
-react
-react-dom
-react-loader-spinner
-react-modal
-react-redux
-react-router-dom
-react-toastify
-redux
-redux-persist
-yup
-Routing
-"/" - Home page with a general description of services.
-"/catalog" - Page displaying the camper catalog.
-"/favorites" - Page displaying favorite listings.
-If a user navigates to a non-existent route, they will be redirected to the home page.
+Welcome to our Camper Rental Application! This application is designed for our company, which specializes in providing camper rental services in Ukraine. Here's a brief overview of what our application offers:
+
+- **Home Page**: Get an introduction to our services and what sets us apart.
+- **Camper Catalog**: Browse through our diverse range of campers, filterable by location, equipment, and type.
+- **Favorite Listings**: Keep track of your favorite camper listings.
+
+The UI is designed to be intuitive and user-friendly, ensuring a seamless experience for our users.
+
+## Technical Specifications
+
+### Listing Card
+
+Our listing card showcases all the essential information about each camper rental listing in a visually appealing format.
+
+### Camper Catalog
+
+Start exploring our camper catalog, where you'll find an initial set of listings. Click the "Load more" button to reveal more listings dynamically.
+
+### Favorite Listings
+
+Found a camper you love? Add it to your favorites with a simple click! The heart icon will change color to indicate it's been added. Remove it just as easily by clicking again.
+
+### Persistence
+
+Don't worry about losing your favorites when you refresh the page! Your selections will be saved so you can pick up right where you left off.
+
+### Modal Window
+
+For more details about a camper, simply click the "Show more" button. A modal window will open, providing comprehensive information about the camper, along with a booking form.
+
+### Booking Form
+
+Ready to reserve your camper? Fill out the booking form with your name, email, preferred booking date, and any additional comments. All fields are required and undergo validation.
+
+### Filtering
+
+Refine your search using our filtering options based on location, equipment, and type.
+
+## Used Libraries
+
+We've utilized a variety of libraries and tools to build this application:
+
+- **@emotion/react**
+- **@emotion/styled**
+- **@reduxjs/toolkit**
+- **axios**
+- **formik**
+- **nanoid**
+- **npm**
+- **react**
+- **react-dom**
+- **react-loader-spinner**
+- **react-modal**
+- **react-redux**
+- **react-router-dom**
+- **react-toastify**
+- **redux**
+- **redux-persist**
+- **yup**
+
+## Routing
+
+- **"/"**: Home page with a general description of our services.
+- **"/catalog"**: Explore our camper catalog.
+- **"/favorites"**: View your favorite camper listings.
+- If a user navigates to a non-existent route, they will be redirected to the home page.
+
+## Let's Get Started!
+
+We're excited to have you explore our Camper Rental Application. Whether you're planning your next adventure or simply curious, we're here to help you find the perfect camper for your journey!
+
+Happy travels! 🚐✨

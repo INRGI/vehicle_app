@@ -119,4 +119,5 @@ export const Buttons = styled.p`
 export const BottomContainer = styled.div`
     display: flex;
     justify-content: space-between;
+    width: 100%;
 `;

@@ -62,7 +62,10 @@ const Modal = ({isOpen, onClose, camper}) => {
                 <Suspense fallback={<Loader />}>
                     <Outlet />
                 </Suspense>
-                <Forma />
+                <div>
+                    <Forma />
+                </div>
+                
             </BottomContainer>
         </Container>
     )

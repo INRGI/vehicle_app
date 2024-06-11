@@ -37,11 +37,47 @@ export const InputContainer = styled.div`
 
 export const Button = styled.button`
     border-radius: 200px;
+    border: none;
     width: 160px;
     height: 56px;
     background-color: #e44848;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    color: #fff;
+    margin-top: 24px;
 `;
 
 export const Input = styled(Field)`
+    border-radius: 10px;
+    width: 100%;
+    max-width: 364px;
+    height: 56px;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: rgba(16, 24, 40, 0.6);
+    background-color:  #f7f7f7;
+    border: none;
+    padding: 0 18px;
+`;
 
+export const InputText = styled.textarea`
+    border-radius: 10px;
+    width: 100%;
+    max-width: 364px;
+    height: 114px;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: rgba(16, 24, 40, 0.6);
+    background-color: #f7f7f7;
+    border: none;
+    padding: 18px;
+    text-align: left;
+    vertical-align: top; 
 `;

@@ -115,3 +115,8 @@ export const Buttons = styled.p`
     line-height: 120%;
     color: #101828;
 `;
+
+export const BottomContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;

@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
 import CardTitle from "../CardTitle/CardTitle";
-import { Buttons, Container, Description, Icon, Image, ImageContainer, LinkContainer, Price, StyledLink, TopContainer } from "./Modal.styled";
+import { BottomContainer, Buttons, Container, Description, Icon, Image, ImageContainer, LinkContainer, Price, StyledLink, TopContainer } from "./Modal.styled";
 import sprite from '../../assets/sprite.svg';
-import { Suspense } from "react";
-import { Outlet } from "react-router-dom";
+import { Suspense, useEffect, useState } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import Loader from "../Loader";
+import Forma from "../Forma/Forma";
 
 const Modal = ({isOpen, onClose, camper}) => {
 
@@ -13,6 +14,16 @@ const Modal = ({isOpen, onClose, camper}) => {
             backgroundColor: 'rgba(17, 18, 19, 0.4)',
         }
     }
+
+    const navigate = useNavigate();
+    const [isFirstOpen, setIsFirstOpen] = useState(true);
+
+    useEffect(() => {
+        if (isOpen && isFirstOpen) {
+            navigate("features");
+            setIsFirstOpen(false);
+        }
+    }, [isOpen, isFirstOpen, navigate]);
 
     return (
         <Container
@@ -47,9 +58,12 @@ const Modal = ({isOpen, onClose, camper}) => {
                 </StyledLink>
             </LinkContainer>
 
-            <Suspense fallback={<Loader />}>
-                <Outlet />
-            </Suspense>
+            <BottomContainer>
+                <Suspense fallback={<Loader />}>
+                    <Outlet />
+                </Suspense>
+                <Forma />
+            </BottomContainer>
         </Container>
     )
 }
